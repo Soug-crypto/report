@@ -23,7 +23,7 @@ hide_st_style = """
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
-DEFAULT_PAGE_SIZE = 20
+DEFAULT_PAGE_SIZE = 10
 
 def get_page_prefix(chart_dir: Path) -> str:
     """Generates a unique page prefix based on chart directory."""
