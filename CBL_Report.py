@@ -35,7 +35,7 @@ def init_session_state(page_prefix: str) -> None:
         "search_query": "",
         "selected_types": [],
         "page_number": 0,
-        "sort_by": "Name",
+        "sort_by": "Size",
         "page_size": DEFAULT_PAGE_SIZE,
         "all_files": [],
         "selected_chart": None,
