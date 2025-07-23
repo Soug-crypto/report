@@ -19,7 +19,7 @@ hide_st_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
-            ._profileContainer_gzau3_53 {visibility: hidden;}
+            #appCreatorAvatar {visibility: hidden;}
             ._container_gzau3_1 {visibility: hidden;}
             </style>
             """
