@@ -19,8 +19,6 @@ hide_st_style = """
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
-            img[data-testid="appCreatorAvatar"] {display: none !important;}
-            div._link_gzau3_10 {display: none !important;}
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
