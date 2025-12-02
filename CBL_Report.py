@@ -340,6 +340,7 @@ async def main(chart_dir: Path) -> None:
      )
 
     try:
+        # Moved directory selection to main section, so title is now in main app flow
         st.title(f"Interactive - {chart_dir.name}")
 
         # Load all files only if not already loaded.
@@ -464,19 +465,28 @@ if __name__ == "__main__":
                    "2. Place your chart JSON files in these subfolders."
             )
         else:
-            # Sidebar for selecting a directory
-            selected_dir = st.sidebar.selectbox(
-                "Select Dashboard",
-                chart_directories,
-                format_func=lambda x: x.name,
-                key="directory_selectbox",
-                index = chart_directories.index(st.session_state.get("selected_dir", chart_directories[0])) if "selected_dir" in st.session_state else 0,
-                on_change = lambda: update_session_state(get_page_prefix(selected_dir), "page_number", 0) # Reset page number when a new directory is selected
-
-            )
+            # MAIN SECTION: Directory selection moved here
+            st.title("Chart Dashboard Viewer")
+            
+            # Create columns for better layout of directory selection
+            col1, col2 = st.columns([1, 3])
+            
+            with col1:
+                # Directory selection drop-down in main section
+                selected_dir = st.selectbox(
+                    "Select Dashboard",
+                    chart_directories,
+                    format_func=lambda x: x.name,
+                    key="directory_selectbox",
+                    index = chart_directories.index(st.session_state.get("selected_dir", chart_directories[0])) if "selected_dir" in st.session_state else 0,
+                    on_change = lambda: update_session_state(get_page_prefix(selected_dir), "page_number", 0) # Reset page number when a new directory is selected
+                )
 
             # Persist selected directory
             st.session_state["selected_dir"] = selected_dir
+
+            # Add a separator for visual clarity
+            st.divider()
 
             # Call the main function with the selected directory
             asyncio.run(main(selected_dir))
